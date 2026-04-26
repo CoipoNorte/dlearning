@@ -1,0 +1,165 @@
+/* ============================================
+   dlearning — Windows 7 Aero Theme 💻
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+/* ============================================
+   @theme — Sistema Windows 7
+   ============================================ */
+@theme {
+  /* Colores Windows 7 */
+  --color-win-blue: #1b5a9e;
+  --color-win-blue-light: #3d8ee8;
+  --color-win-blue-dark: #0f3b6d;
+  --color-win-accent: #0078d4;
+  --color-win-sky: #cce4f7;
+  --color-win-sky-light: #e5f1fb;
+
+  /* Cristal Aero */
+  --color-aero-glass: rgba(200, 220, 240, 0.65);
+  --color-aero-glass-dark: rgba(20, 40, 80, 0.75);
+  --color-aero-border: rgba(255, 255, 255, 0.5);
+  --color-aero-border-dark: rgba(0, 0, 0, 0.15);
+
+  /* Grises Windows */
+  --color-win-white: #ffffff;
+  --color-win-gray-50: #f9f9f9;
+  --color-win-gray-100: #f0f0f0;
+  --color-win-gray-200: #e0e0e0;
+  --color-win-gray-300: #cccccc;
+  --color-win-gray-400: #aaaaaa;
+  --color-win-gray-500: #888888;
+  --color-win-gray-600: #666666;
+  --color-win-gray-700: #444444;
+  --color-win-gray-800: #2d2d2d;
+  --color-win-gray-900: #1a1a1a;
+
+  /* Colores de estado */
+  --color-win-green: #2d9b2d;
+  --color-win-red: #c42b1c;
+  --color-win-yellow: #f0c800;
+  --color-win-orange: #f08c00;
+
+  /* Animaciones */
+  --animate-fade-in: fadeIn 0.3s ease-out;
+  --animate-slide-up: slideUp 0.4s ease-out;
+  --animate-slide-in: slideIn 0.3s ease-out;
+  --animate-glow: aeroGlow 2s ease-in-out infinite;
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes aeroGlow {
+    0%, 100% { box-shadow: 0 0 15px rgba(0, 120, 212, 0.2); }
+    50%      { box-shadow: 0 0 25px rgba(0, 120, 212, 0.4); }
+  }
+}
+
+/* ============================================
+   Estilos globales
+   ============================================ */
+body {
+  font-family: 'Segoe UI', -apple-system, sans-serif;
+  /* Fondo tipo escritorio Windows 7 */
+  background: linear-gradient(135deg, #1e4a7a 0%, #2d6cb5 30%, #4a90d9 60%, #1e4a7a 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #1a1a1a;
+}
+
+/* Scrollbar estilo Windows 7 */
+::-webkit-scrollbar { width: 14px; }
+::-webkit-scrollbar-track {
+  background: linear-gradient(to right, #e8e8e8, #f5f5f5, #e8e8e8);
+  border: 1px solid #c0c0c0;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, #c0c0c0, #d8d8d8, #c0c0c0);
+  border: 1px solid #a0a0a0;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to right, #a0a0a0, #b8b8b8, #a0a0a0);
+}
+
+::selection {
+  background: #0078d4;
+  color: white;
+}
+
+/* ============================================
+   @utility — Clases Aero reutilizables
+   ============================================ */
+
+/* Efecto cristal Aero */
+@utility aero-glass {
+  background: linear-gradient(135deg, rgba(200, 220, 240, 0.65), rgba(180, 210, 240, 0.45));
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.1),
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Panel interior tipo contenido Windows */
+@utility aero-panel {
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Botón estilo Windows 7 */
+@utility aero-btn {
+  background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+  border: 1px solid #acacac;
+  border-radius: 3px;
+  padding: 4px 12px;
+  font-size: 13px;
+  color: #1a1a1a;
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 1px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+/* Botón hover */
+@utility aero-btn-hover {
+  background: linear-gradient(to bottom, #e8f0fc, #d0e4f8);
+  border-color: #7eb4ea;
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 0 4px rgba(0, 120, 212, 0.3);
+}
+
+/* Barra de título estilo ventana */
+@utility aero-titlebar {
+  background: linear-gradient(to bottom, rgba(200, 220, 245, 0.9), rgba(170, 200, 235, 0.8));
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Fuente código */
+@utility font-code {
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
+}
+
+/* Sombra de ventana Windows */
+@utility win-shadow {
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.1),
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    0 2px 8px rgba(0, 0, 0, 0.1);
+}
